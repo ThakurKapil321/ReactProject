@@ -1,0 +1,201 @@
+.not-found-page {
+  min-height: calc(100vh - 70px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #f6f7f9;
+
+  padding: 40px 20px;
+}
+
+
+.not-found-content {
+  text-align: center;
+
+  max-width: 650px;
+
+  padding: 50px 30px;
+}
+
+
+/* =========================
+   CAR ICON
+========================= */
+
+.not-found-car {
+  width: 90px;
+  height: 90px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  color: #e53935;
+
+  font-size: 45px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+  animation: carBounce 2s ease-in-out infinite;
+}
+
+
+@keyframes carBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+
+/* =========================
+   404
+========================= */
+
+.not-found-content h1 {
+  margin: 0;
+
+  font-size: 120px;
+
+  line-height: 1;
+
+  font-weight: 800;
+
+  color: #172536;
+
+  letter-spacing: 5px;
+}
+
+
+.not-found-content h2 {
+  margin: 15px 0 10px;
+
+  font-size: 30px;
+
+  color: #172536;
+}
+
+
+.not-found-content p {
+  max-width: 500px;
+
+  margin: 0 auto 30px;
+
+  color: #69727d;
+
+  font-size: 16px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.not-found-buttons {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+}
+
+
+.home-btn,
+.cars-btn {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 13px 22px;
+
+  border-radius: 9px;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+
+/* Home */
+
+.home-btn {
+  background: #e53935;
+
+  color: white;
+}
+
+
+.home-btn:hover {
+  background: #c62828;
+
+  transform: translateY(-2px);
+}
+
+
+/* Cars */
+
+.cars-btn {
+  background: white;
+
+  color: #172536;
+
+  border: 1px solid #d5d9dd;
+}
+
+
+.cars-btn:hover {
+  border-color: #172536;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .not-found-content h1 {
+    font-size: 85px;
+  }
+
+  .not-found-content h2 {
+    font-size: 23px;
+  }
+
+  .not-found-content p {
+    font-size: 14px;
+  }
+
+  .not-found-buttons {
+    flex-direction: column;
+
+    width: 220px;
+
+    margin: auto;
+  }
+
+}
