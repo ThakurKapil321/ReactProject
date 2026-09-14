@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import {
   FaHeart,
   FaGasPump,
@@ -11,13 +12,13 @@ import {
 import { car } from "../car.js";
 
 function CarCards() {
+  const navigate = useNavigate();
   return (
     <div className="cars-container">
 
       {car.map((car) => (
         <div className="car-card" key={car._id}>
 
-          {/* ================= IMAGE ================= */}
           <div className="car-image-container">
 
             <img
@@ -103,14 +104,18 @@ function CarCards() {
 
               <div className="card-buttons">
 
-                <button className="details-btn">
+                <button  onClick={() =>
+                  navigate(`ViewDetails/${car.id}`)
+                } className="details-btn">
                   View Details
                 </button>
 
-                <button className="buy-btn">
+              
+                <button  className="buy-btn">
                   <FaShoppingBag />
                   Buy Now
                 </button>
+
 
               </div>
 

@@ -1,6 +1,7 @@
 import "../CSS/Profile.css";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom"
 
 function Profile() {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ function Profile() {
   }
 
   return (
+    
     <div className="profile-page">
 
       {/* Profile Header */}
@@ -164,10 +166,14 @@ function Profile() {
             <p>
               Save your favourite cars and find them easily later.
             </p>
-
+            < Link to="/">
+  
             <button className="browse-btn">
               Browse Cars
+      
             </button>
+            </Link>
+          
 
           </div>
         </div>

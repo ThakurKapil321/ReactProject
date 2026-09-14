@@ -7,6 +7,7 @@ import PageNFound from "./Pages/PageNotFound.jsx";
 import About_us from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx"
 import Profile from "./Pages/Profile.jsx";
+import ViewDetails from "./Pages/ViewDetails.jsx"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/about" element={<About_us/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/ViewDetails/:id" element={<ViewDetails/>}/>
 
       </Routes>
 
