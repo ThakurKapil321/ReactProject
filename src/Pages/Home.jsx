@@ -1,7 +1,9 @@
 import CarCards from "../Components/carCard";
 import Footer from "../Components/Footer"
-import Header from "../Components/Header"
+import Header from "../Components/Navbar"
+
 function Home() {
+
     return(
          <div> 
                <Header/>

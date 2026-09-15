@@ -6,7 +6,7 @@ import {
   FaUsers,
   FaCheckCircle
 } from "react-icons/fa";
-import Header from "../Components/Header.jsx";
+import Header from "../Components/Navbar.jsx";
 
 import "../CSS/About_us.css";
 

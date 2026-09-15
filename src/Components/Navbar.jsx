@@ -1,4 +1,4 @@
-import "../CSS/Header.css";
+import "../CSS/Navbar.css";
 
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -63,7 +63,16 @@ function Header() {
               About
             </NavLink>
           </li>
+           {/* CART*/}
+           <li className="icon">
+           <NavLink to="/Cart"
+           className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }>
+             Cart
+           </NavLink>
 
+           </li>
           {/* Login / Profile */}
           {!isLogged ? (
             <li className="icon">

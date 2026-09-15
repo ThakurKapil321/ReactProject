@@ -1,6 +1,6 @@
 import { Link, useNavigate} from "react-router-dom";
 import "../CSS/Login.css";
-import Header from "../Components/Header.jsx";
+import Header from "../Components/Navbar.jsx";
 import Footer from "../Components/Footer.jsx";
 import { useState } from "react";
 

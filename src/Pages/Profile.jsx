@@ -1,7 +1,7 @@
 import "../CSS/Profile.css";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { Link } from "react-router-dom"
+import { FaArrowLeft } from "react-icons/fa";
 
 function Profile() {
   const navigate = useNavigate();
@@ -26,8 +26,8 @@ function Profile() {
   }
 
   return (
-    
     <div className="profile-page">
+
 
       {/* Profile Header */}
       <section className="profile-header">
@@ -46,7 +46,14 @@ function Profile() {
         </button>
 
       </section>
-
+      {/* Back to Home Button */}
+      <button
+        className="back-home-btn"
+        onClick={() => navigate("/")}
+      >
+        <FaArrowLeft />
+        <span>Back </span>
+      </button>
       {/* Profile Content */}
       <section className="profile-container">
 
@@ -166,14 +173,12 @@ function Profile() {
             <p>
               Save your favourite cars and find them easily later.
             </p>
-            < Link to="/">
-  
-            <button className="browse-btn">
-              Browse Cars
-      
-            </button>
+
+            <Link to="/">
+              <button className="browse-btn">
+                Browse Cars
+              </button>
             </Link>
-          
 
           </div>
         </div>
@@ -194,3 +199,5 @@ function Profile() {
 }
 
 export default Profile;
+
+
