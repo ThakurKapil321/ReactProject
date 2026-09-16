@@ -3,6 +3,15 @@ import { cartContext } from "../Context/carContext";
 import Header from "../Components/Navbar.jsx";
 import "../CSS/cart.css"
 import { useNavigate } from "react-router-dom";
+function formatPrice(price) {
+  const crores = price/10000000;
+  const lakhs = price/100000;
+  if (crores >=1) {
+    return `₹${parseFloat(crores.toFixed(2))}
+    Crore`;
+  }
+  return `₹${parseFloat(lakhs.toFixed(2))} Lakh`;
+}
 
 function Cart() {
     const navigate = useNavigate();
@@ -88,7 +97,7 @@ function Cart() {
                   </p>
 
                   <p className="car-price">
-                    ₹{Number(item.price).toLocaleString("en-IN")}
+                    {formatPrice(item.price)}
                   </p>
 
                   {/* Quantity */}
@@ -142,10 +151,9 @@ function Cart() {
                   <p>Total</p>
 
                   <h3>
-                    ₹
-                    {(
-                      Number(item.price) * item.quantity
-                    ).toLocaleString("en-IN")}
+                    
+                   {formatPrice(item.price*item.quantity)} 
+                    
                   </h3>
 
                 </div>
@@ -168,13 +176,12 @@ function Cart() {
             <div className="summary-row">
               <span>Subtotal</span>
               <span>
-                ₹{totalPrice.toLocaleString("en-IN")}
+                {formatPrice(totalPrice)}
               </span>
             </div>
 
             <div className="summary-row">
-              <span>Delivery</span>
-              <span>Free</span>
+          
             </div>
 
             <hr />
@@ -182,7 +189,7 @@ function Cart() {
             <div className="summary-total">
               <span>Total</span>
               <strong>
-                ₹{totalPrice.toLocaleString("en-IN")}
+                {formatPrice(totalPrice)}
               </strong>
             </div>
 

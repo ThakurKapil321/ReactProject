@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function Header() {
   const [isLogged, setIsLogged] = useState(
-    localStorage.getItem("isLogged") == "true"
+    localStorage.getItem("isLogged") === "true"
   );
 
   return (
@@ -63,16 +63,19 @@ function Header() {
               About
             </NavLink>
           </li>
-           {/* CART*/}
-           <li className="icon">
-           <NavLink to="/Cart"
-           className={({ isActive }) =>
-                isActive ? "nav-item active" : "nav-item"
-              }>
-             Cart
-           </NavLink>
 
-           </li>
+          {/* Cart */}
+          <li className="icon">
+            <NavLink
+              to="/Cart"
+              className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }
+            >
+              Cart
+            </NavLink>
+          </li>
+
           {/* Login / Profile */}
           {!isLogged ? (
             <li className="icon">

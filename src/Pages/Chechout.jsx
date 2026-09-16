@@ -5,6 +5,15 @@ import Footer from "../Components/Footer.jsx";
 import { cartContext } from "../Context/carContext.jsx";
 import { toast } from "react-toastify";
 import "../CSS/Checkout.css";
+function formatPrice(price) {
+  const crores = price/10000000;
+  const lakhs = price/100000;
+  if (crores >=1) {
+    return `₹${parseFloat(crores.toFixed(2))}
+    Crore`;
+  }
+  return `₹${parseFloat(lakhs.toFixed(2))} Lakh`;
+}
 
 function Checkout() {
   const { cart, dispatch } = useContext(cartContext);
@@ -329,11 +338,7 @@ function Checkout() {
                       </p>
 
                       <strong>
-                        ₹
-                        {(
-                          Number(item.price) *
-                          item.quantity
-                        ).toLocaleString("en-IN")}
+                        {formatPrice(item.price)}
                       </strong>
 
                     </div>
@@ -357,13 +362,8 @@ function Checkout() {
                   <span>Subtotal</span>
 
                   <span>
-                    ₹{totalPrice.toLocaleString("en-IN")}
+                    {formatPrice(totalPrice)}
                   </span>
-                </div>
-
-                <div>
-                  <span>Delivery</span>
-                  <span className="free">FREE</span>
                 </div>
 
               </div>
@@ -378,7 +378,7 @@ function Checkout() {
                 <span>Total</span>
 
                 <strong>
-                  ₹{totalPrice.toLocaleString("en-IN")}
+                  {formatPrice(totalPrice)}
                 </strong>
 
               </div>

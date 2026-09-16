@@ -8,7 +8,24 @@ import { useContext } from "react";
 import { cartContext } from "../Context/carContext.jsx";
 
 import { toast } from "react-toastify";
-import { FaShoppingBag } from "react-icons/fa";
+import {
+  FaShoppingBag,
+  FaHeart,
+  FaHome,
+  FaCar,
+  FaCalendarAlt,
+  FaBox,
+  FaQuestionCircle,
+  FaCog,
+  FaMapMarkerAlt,
+  FaStar,
+  FaTachometerAlt,
+  FaGasPump,
+  FaCogs,
+  FaShieldAlt,
+  FaBluetooth,
+  FaSnowflake,
+} from "react-icons/fa";
 
 function ViewDetails() {
   const { cart, dispatch } = useContext(cartContext);
@@ -19,33 +36,32 @@ function ViewDetails() {
 
   const select = car.find(
     (car) => car.id === Number(id)
-  )
+  );
+
   if (!select) {
     return (
       <>
         <Header />
 
         <div className="details-page">
-
           <Link to="/" className="back-btn">
-            Back to Cars
+            ← Back to Cars
           </Link>
 
-          <div className="details-container">
-            <div className="details-info">
-              <h1>Data not found</h1>
-            </div>
+          <div className="not-found">
+            <h1>Car Not Found</h1>
           </div>
-
         </div>
 
         <Footer />
       </>
     );
   }
+
   const isAdded = cart.some(
     (item) => item.id === select.id
   );
+
   const addToCart = () => {
     dispatch({
       type: "ADD",
@@ -66,146 +82,417 @@ function ViewDetails() {
 
       <main className="details-page">
 
-        {/* Back Button */}
-        <Link to="/" className="back-btn">
-          Back to Cars
-        </Link>
 
-        {/* Main Details */}
-        <div className="details-container">
 
-          {/* Car Image */}
-          <div className="details-image-container">
+        {/* ================= MAIN CONTENT ================= */}
 
-            <img
-              src={select.image}
-              alt={`${select.brand} ${select.model}`}
-              className="details-image"
-            />
+        <section className="details-main">
 
-          </div>
+          {/* Top bar */}
 
-          {/* Car Information */}
-          <div className="details-info">
+          <div className="details-topbar">
 
-            {/* Brand */}
-            <div className="details-brand">
-              {select.brand}
-            </div>
+            <Link
+              to="/"
+              className="desktop-back"
+            >
+              ← Back to Cars
+            </Link>
 
-            {/* Model */}
-            <h1 className="details-name">
-              {select.model}
-            </h1>
+            <div className="top-actions">
 
-            {/* Year */}
-            <p className="details-year">
-              Model Year: {select.year}
-            </p>
+              <button>
+                ☼
+              </button>
 
-            {/* Price */}
-            <div className="details-price">
-              ₹{select.price}
-            </div>
+              <button>
+                ☾
+              </button>
 
-            {/* Specifications */}
-            <div className="car-specs">
-
-              <div className="spec-box">
-                <span className="spec-title">
-                  Brand
-                </span>
-
-                <span className="spec-value">
-                  {select.brand}
-                </span>
-              </div>
-
-              <div className="spec-box">
-                <span className="spec-title">
-                  Model
-                </span>
-
-                <span className="spec-value">
-                  {select.model}
-                </span>
-              </div>
-
-              <div className="spec-box">
-                <span className="spec-title">
-                  Year
-                </span>
-
-                <span className="spec-value">
-                  {select.year}
-                </span>
-              </div>
-
-              <div className="spec-box">
-                <span className="spec-title">
-                  Type
-                </span>
-
-                <span className="spec-value">
-                  {select.type || "Car"}
-                </span>
-              </div>
-
-            </div>
-
-            {/* Buttons */}
-            <div className="details-buttons">
-
-              {isAdded ? (
-
-                <button
-                  className="buy-btn"
-                  onClick={() => navigate("/Cart")}
-                >
-                  <FaShoppingBag />
-                  Added to Cart
-                </button>
-
-              ) : (
-
-                <button
-                  className="buy-btn"
-                  onClick={addToCart}
-                >
-                  <FaShoppingBag />
-                  Buy Now
-                </button>
-
-              )}
-
-              <button className="contact-btn">
-                Contact Seller
+              <button>
+                ♡
               </button>
 
             </div>
 
           </div>
 
-        </div>
+          {/* Car heading */}
+          <div className="car-heading">
 
-        {/* Description */}
-        <div className="details-description">
+            <div>
 
-          <h2>
-            About This Car
-          </h2>
+              <p className="details-brand">
+                {select.brand}
+              </p>
 
-          <p>
-            Experience the perfect combination of style,
-            performance and comfort with the{" "}
-            {select.brand} {select.model}.
-          </p>
+              <h1>
+                {select.model}
+              </h1>
 
-        </div>
+              <p className="details-year">
+                Model Year: {select.year}
+              </p>
+
+            </div>
+
+            <button className="heart-button">
+              <FaHeart />
+            </button>
+
+          </div>
+
+
+          {/* Price */}
+
+          <div className="details-price">
+            ₹{select.price}
+          </div>
+
+
+          {/* Stats */}
+
+          <div className="car-stat-pills">
+
+            <div className="stat-pill">
+              <FaStar />
+              <span>4.8</span>
+            </div>
+
+            <div className="stat-pill">
+              <FaTachometerAlt />
+              <span>255 HP</span>
+            </div>
+
+            <div className="stat-pill">
+              <FaGasPump />
+              <span>Petrol</span>
+            </div>
+
+            <div className="stat-pill">
+              <FaCogs />
+              <span>Automatic</span>
+            </div>
+
+          </div>
+
+
+          {/* Main grid */}
+
+          <div className="details-grid">
+
+
+            {/* ================= LEFT ================= */}
+
+            <div className="details-left">
+
+
+              {/* Car Image */}
+
+              <div className="car-image-card">
+
+                <img
+                  src={select.image}
+                  alt={`${select.brand} ${select.model}`}
+                />
+
+              </div>
+
+
+              {/* Features */}
+
+              <div className="features-card">
+
+                <h2>
+                  Car Features
+                </h2>
+
+                <div className="features-grid">
+
+
+                  <div className="feature-column">
+
+                    <h3>
+                      <FaShieldAlt />
+                      Safety
+                    </h3>
+
+                    <p>
+                      Backup camera
+                    </p>
+
+                    <p>
+                      Tire pressure monitor
+                    </p>
+
+                    <p>
+                      Blind spot alert
+                    </p>
+
+                  </div>
+
+
+                  <div className="feature-column">
+
+                    <h3>
+                      <FaBluetooth />
+                      Connectivity
+                    </h3>
+
+                    <p>
+                      Bluetooth audio
+                    </p>
+
+                    <p>
+                      Navigation system
+                    </p>
+
+                    <p>
+                      USB connectivity
+                    </p>
+
+                  </div>
+
+
+                  <div className="feature-column">
+
+                    <h3>
+                      <FaSnowflake />
+                      Comfort
+                    </h3>
+
+                    <p>
+                      Air conditioning
+                    </p>
+
+                    <p>
+                      Adjustable seats
+                    </p>
+
+                    <p>
+                      Smart key entry
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* Specifications */}
+
+              <div className="specification-card">
+
+                <h2>
+                  Specifications
+                </h2>
+
+                <div className="specification-grid">
+
+                  <div>
+                    <span>Brand</span>
+                    <strong>{select.brand}</strong>
+                  </div>
+
+                  <div>
+                    <span>Model</span>
+                    <strong>{select.model}</strong>
+                  </div>
+
+                  <div>
+                    <span>Year</span>
+                    <strong>{select.year}</strong>
+                  </div>
+
+                  <div>
+                    <span>Type</span>
+                    <strong>
+                      {select.type || "Car"}
+                    </strong>
+                  </div>
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+            {/* ================= RIGHT ================= */}
+
+            <aside className="details-right">
+
+
+              {/* Purchase card */}
+
+              <div className="purchase-card">
+
+                <h2>
+                  Purchase Summary
+                </h2>
+
+
+                <div className="summary-row">
+
+                  <span>
+                    Car Price
+                  </span>
+
+                  <strong>
+                    ₹{select.price}
+                  </strong>
+
+                </div>
+
+
+                <div className="summary-row">
+
+                  <span>
+                    Registration
+                  </span>
+
+                  <span>
+                    Included
+                  </span>
+
+                </div>
+
+
+                <div className="summary-row">
+
+                  <span>
+                    Dealer Fee
+                  </span>
+
+                  <span>
+                    Included
+                  </span>
+
+                </div>
+
+
+                <div className="summary-divider"></div>
+
+
+                <div className="total-row">
+
+                  <span>
+                    Total Price
+                  </span>
+
+                  <strong>
+                    ₹{select.price}
+                  </strong>
+
+                </div>
+
+
+                {isAdded ? (
+
+                  <button
+                    className="purchase-btn"
+                    onClick={() =>
+                      navigate("/Cart")
+                    }
+                  >
+                    <FaShoppingBag />
+                    Go to Cart
+                  </button>
+
+                ) : (
+
+                  <button
+                    className="purchase-btn"
+                    onClick={addToCart}
+                  >
+                    <FaShoppingBag />
+                    Buy Now
+                  </button>
+
+                )}
+
+
+                <button className="contact-btn">
+                  Contact Seller
+                </button>
+
+              </div>
+
+
+              {/* Location */}
+
+              <div className="location-card">
+
+                <div className="location-header">
+
+                  <h2>
+                    Dealer Location
+                  </h2>
+
+                  <button>
+                    ↗
+                  </button>
+
+                </div>
+
+
+                <div className="location-map">
+
+                  <FaMapMarkerAlt />
+
+                </div>
+
+
+                <div className="location-info">
+
+                  <FaMapMarkerAlt />
+
+                  <div>
+
+                    <strong>
+                      Premium Auto Dealer
+                    </strong>
+
+                    <p>
+                      Delhi, India
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              {/* About */}
+
+              <div className="about-card">
+
+                <h2>
+                  About This Car
+                </h2>
+
+                <p>
+                  Experience the perfect combination
+                  of style, performance and comfort
+                  with the {select.brand}{" "}
+                  {select.model}.
+                </p>
+
+              </div>
+
+
+            </aside>
+
+          </div>
+
+        </section>
 
       </main>
 
       <Footer />
+
     </>
   );
 }

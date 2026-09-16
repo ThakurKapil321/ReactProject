@@ -14,6 +14,15 @@ import { useContext } from "react";
 import { cartContext } from "../Context/carContext.jsx";
 
 import { toast } from "react-toastify";
+function formatPrice(price) {
+  const crores = price/10000000;
+  const lakhs = price/100000;
+  if (crores >=1) {
+    return `₹${parseFloat(crores.toFixed(2))}
+    Crore`;
+  }
+  return `₹${parseFloat(lakhs.toFixed(2))} Lakh`;
+}
 
 function CarCards() {
   const { cart, dispatch } = useContext(cartContext);
@@ -96,17 +105,17 @@ function CarCards() {
 
                 <div className="spec">
                   <FaGasPump />
-                  <span>Diesel</span>
+                  <span>{car.fuelType}</span>
                 </div>
 
                 <div className="spec">
                   <FaCog />
-                  <span>Manual</span>
+                  <span>{car.transmission}</span>
                 </div>
 
                 <div className="spec">
                   <FaTachometerAlt />
-                  <span>15 KM/L</span>
+                  <span>{car.mileage}</span>
                 </div>
 
               </div>
@@ -116,7 +125,7 @@ function CarCards() {
 
                 <div className="price-container">
 
-                  <h3>{car.price}</h3>
+                  <h3>{formatPrice(car.price)}</h3>
 
                   <p>
                     Ex-Showroom Price
